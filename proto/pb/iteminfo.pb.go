@@ -146,6 +146,124 @@ func (x *Order) GetTimestamp() int64 {
 	return 0
 }
 
+type ItemListFilter struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Category     string `protobuf:"bytes,1,opt,name=category,proto3" json:"category,omitempty"`
+	Filteroption int32  `protobuf:"varint,2,opt,name=filteroption,proto3" json:"filteroption,omitempty"`
+}
+
+func (x *ItemListFilter) Reset() {
+	*x = ItemListFilter{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_iteminfo_proto_msgTypes[2]
+		ms := protoimpgsl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ItemListFilter) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ItemListFilter) ProtoMessage() {}
+
+func (x *ItemListFilter) ProtoReflect() protoreflect.Message {
+	mi := &file_iteminfo_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ItemListFilter.ProtoReflect.Descriptor instead.
+func (*ItemListFilter) Descriptor() ([]byte, []int) {
+	return file_iteminfo_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ItemListFilter) GetCategory() string {
+	if x != nil {
+		return x.Category
+	}
+	return ""
+}
+
+func (x *ItemListFilter) GetFilteroption() int32 {
+	if x != nil {
+		return x.Filteroption
+	}
+	return 0
+}
+
+type GetItemListRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Requestid      int64             `protobuf:"varint,1,opt,name=requestid,proto3" json:"requestid,omitempty"`
+	Userid         int64             `protobuf:"varint,2,opt,name=userid,proto3" json:"userid,omitempty"` // Utilise some mock recommendation service
+	ItemListFilter []*ItemListFilter `protobuf:"bytes,3,rep,name=itemListFilter,proto3" json:"itemListFilter,omitempty"`
+}
+
+func (x *GetItemListRequest) Reset() {
+	*x = GetItemListRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_iteminfo_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetItemListRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetItemListRequest) ProtoMessage() {}
+
+func (x *GetItemListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_iteminfo_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetItemListRequest.ProtoReflect.Descriptor instead.
+func (*GetItemListRequest) Descriptor() ([]byte, []int) {
+	return file_iteminfo_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetItemListRequest) GetRequestid() int64 {
+	if x != nil {
+		return x.Requestid
+	}
+	return 0
+}
+
+func (x *GetItemListRequest) GetUserid() int64 {
+	if x != nil {
+		return x.Userid
+	}
+	return 0
+}
+
+func (x *GetItemListRequest) GetItemListFilter() []*ItemListFilter {
+	if x != nil {
+		return x.ItemListFilter
+	}
+	return nil
+}
+
 var File_iteminfo_proto protoreflect.FileDescriptor
 
 var file_iteminfo_proto_rawDesc = []byte{
@@ -160,8 +278,22 @@ var file_iteminfo_proto_rawDesc = []byte{
 	0x08, 0x71, 0x75, 0x61, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52,
 	0x08, 0x71, 0x75, 0x61, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x12, 0x1c, 0x0a, 0x09, 0x74, 0x69, 0x6d,
 	0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x74, 0x69,
-	0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x42, 0x06, 0x5a, 0x04, 0x2e, 0x2f, 0x70, 0x62, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x22, 0x50, 0x0a, 0x0e, 0x49, 0x74, 0x65, 0x6d, 0x4c,
+	0x69, 0x73, 0x74, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x12, 0x1a, 0x0a, 0x08, 0x63, 0x61, 0x74,
+	0x65, 0x67, 0x6f, 0x72, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x63, 0x61, 0x74,
+	0x65, 0x67, 0x6f, 0x72, 0x79, 0x12, 0x22, 0x0a, 0x0c, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x6f,
+	0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x66, 0x69, 0x6c,
+	0x74, 0x65, 0x72, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x89, 0x01, 0x0a, 0x12, 0x47, 0x65,
+	0x74, 0x49, 0x74, 0x65, 0x6d, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x1c, 0x0a, 0x09, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x09, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x64, 0x12, 0x16,
+	0x0a, 0x06, 0x75, 0x73, 0x65, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06,
+	0x75, 0x73, 0x65, 0x72, 0x69, 0x64, 0x12, 0x3d, 0x0a, 0x0e, 0x69, 0x74, 0x65, 0x6d, 0x4c, 0x69,
+	0x73, 0x74, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x15,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x4c, 0x69, 0x73, 0x74, 0x46,
+	0x69, 0x6c, 0x74, 0x65, 0x72, 0x52, 0x0e, 0x69, 0x74, 0x65, 0x6d, 0x4c, 0x69, 0x73, 0x74, 0x46,
+	0x69, 0x6c, 0x74, 0x65, 0x72, 0x42, 0x06, 0x5a, 0x04, 0x2e, 0x2f, 0x70, 0x62, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -176,18 +308,21 @@ func file_iteminfo_proto_rawDescGZIP() []byte {
 	return file_iteminfo_proto_rawDescData
 }
 
-var file_iteminfo_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_iteminfo_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_iteminfo_proto_goTypes = []interface{}{
-	(*Item)(nil),  // 0: proto.Item
-	(*Order)(nil), // 1: proto.Order
+	(*Item)(nil),               // 0: proto.Item
+	(*Order)(nil),              // 1: proto.Order
+	(*ItemListFilter)(nil),     // 2: proto.ItemListFilter
+	(*GetItemListRequest)(nil), // 3: proto.GetItemListRequest
 }
 var file_iteminfo_proto_depIdxs = []int32{
 	0, // 0: proto.Order.item:type_name -> proto.Item
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	2, // 1: proto.GetItemListRequest.itemListFilter:type_name -> proto.ItemListFilter
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_iteminfo_proto_init() }
@@ -220,6 +355,30 @@ func file_iteminfo_proto_init() {
 				return nil
 			}
 		}
+		file_iteminfo_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ItemListFilter); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_iteminfo_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetItemListRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -227,7 +386,7 @@ func file_iteminfo_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_iteminfo_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

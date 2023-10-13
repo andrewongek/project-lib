@@ -14,3 +14,15 @@ message Order {
     int32 quantity = 3;
     int64 timestamp = 4;
 }
+
+message ItemListFilter {
+    string category = 1;
+    int32 filteroption = 2;
+}
+
+message GetItemListRequest {
+    int64 requestid = 1;
+    int64 userid = 2; // Utilise some mock recommendation service
+    repeated ItemListFilter itemListFilter = 3;
+}
+
